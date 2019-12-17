@@ -1,6 +1,4 @@
 package com.example.domain;
-
-
 import javax.persistence.*;
 import java.util.Set;
 
