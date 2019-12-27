@@ -1,10 +1,7 @@
 package com.example.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Message {
@@ -13,17 +10,25 @@ public class Message {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-
     private String tag;
     private String name;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
 
     public Message(){
 
     }
 
-    public Message(String name, String tag) {
+    public Message(String name, String tag, User user) {
         this.name = name;
         this.tag = tag;
+        this.author = user;
+    }
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
     }
 
 
@@ -55,6 +60,13 @@ public class Message {
         this.tag = tag;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 
 
 }
