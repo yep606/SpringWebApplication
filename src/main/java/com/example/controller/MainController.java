@@ -25,10 +25,17 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String mainPage(Model model) {
+    public String mainPage(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
 
         Iterable<Message> messages = repo.findAll();
+
+        if (filter != null && !filter.isEmpty())
+            messages = repo.findByTag(filter);
+        else
+            messages = repo.findAll();
+
         model.addAttribute("messages", messages);
+        model.addAttribute("filter", filter);
 
         return "main";
     }
@@ -49,18 +56,5 @@ public class MainController {
         return "main";
     }
 
-    @PostMapping("filter")
-    public String filter(@RequestParam String filter, Model model) {
-        Iterable<Message> messages;
-        if (filter != null && !filter.isEmpty())
-            messages = repo.findByTag(filter);
-        else
-            messages = repo.findAll();
-
-        model.addAttribute("messages", messages);
-
-        return "main";
-
-    }
 
 }

@@ -7,5 +7,6 @@ Add new user
     ${message!""}
 
 <@l.login "/registration" />
+    <a href="loginPage.ftl">Back</a>
 
 </@c.page>
