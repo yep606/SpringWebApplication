@@ -20,14 +20,14 @@ public class MainController {
     private MessageRepo repo;
 
     @GetMapping("/")
-    public String greeting(String name, Model model) {
+    public String greeting() {
         return "greeting";
     }
 
     @GetMapping("/main")
     public String mainPage(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
 
-        Iterable<Message> messages = repo.findAll();
+        Iterable<Message> messages;
 
         if (filter != null && !filter.isEmpty())
             messages = repo.findByTag(filter);
