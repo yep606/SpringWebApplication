@@ -1,5 +1,5 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
-    <h1>Hi, buddy!</h1>
-    <a href="/main">Click here to move to the main page!</a>
+    <h1>What's up, dude?</h1>
+    <div>Don't be so shy, click on Messages button</div>
 </@c.page>

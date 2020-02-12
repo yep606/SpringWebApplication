@@ -1,12 +1,6 @@
-
-p {
-    font-size: 100px;
-    text-transform: uppercase;
-    text-decoration: underline;
-}
-
 body {
 
-    background-color: cornflowerblue;
+    color: #052d90;
+    font-weight: bold;
 
 }
