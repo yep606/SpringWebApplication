@@ -3,10 +3,10 @@
 
 <@c.page>
 
-Add new user
+    <div class="mb-1">Add new user</div>
     ${message!""}
 
-<@l.login "/registration" />
+    <@l.login "/registration" true/>
     <a href="loginPage.ftl">Back</a>
 
 </@c.page>
