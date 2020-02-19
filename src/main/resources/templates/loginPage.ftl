@@ -2,6 +2,7 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-<@l.login "/login" false/>
+    ${message!""}
+    <@l.login "/login" false/>
 
 </@c.page>

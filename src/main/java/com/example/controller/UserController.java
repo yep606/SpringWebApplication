@@ -23,14 +23,14 @@ public class UserController {
     private UserRepo repo;
 
     @GetMapping
-    public String userList(Model model){
+    public String userList(Model model) {
         model.addAttribute("users", repo.findAll());
 
         return "userList";
     }
 
     @GetMapping("{user}")
-    public String userEditForm(@PathVariable User user, Model model){
+    public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "userEdit";
@@ -51,7 +51,7 @@ public class UserController {
         user.getRoles().clear();
 
         for (String key : form.keySet()) {
-            if(roles.contains(key))
+            if (roles.contains(key))
                 user.getRoles().add(Role.valueOf(key));
         }
 

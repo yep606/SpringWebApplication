@@ -57,11 +57,11 @@ public class MainController {
 
         Message message = new Message(name, tag, user);
 
-        if(file != null && !file.getOriginalFilename().isEmpty()){
+        if (file != null && !file.getOriginalFilename().isEmpty()) {
 
             File uploadDir = new File(uploadPath);
 
-            if(!uploadDir.exists())
+            if (!uploadDir.exists())
                 uploadDir.mkdir();
 
             String uuIdFile = UUID.randomUUID().toString();

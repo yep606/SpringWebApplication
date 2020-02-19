@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String tag;
@@ -19,7 +19,7 @@ public class Message {
 
     private String filename;
 
-    public Message(){
+    public Message() {
 
     }
 
@@ -44,9 +44,9 @@ public class Message {
 
     public String getName() {
 
-        if(this.name == null)
+        if (this.name == null)
             this.name = "";
-        
+
         return name;
     }
 
