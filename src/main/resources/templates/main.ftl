@@ -45,7 +45,7 @@
                 </#if>
             </div>
             <div class="m-2">
-                <span>${message.name}</span>
+                <span>${message.text}</span>
                 <i>${message.tag}</i>
             </div>
             <div class="card-footer text-muted">

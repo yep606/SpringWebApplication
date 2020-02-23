@@ -8,10 +8,10 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     private String tag;
-    private String name;
+    private String text;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -23,8 +23,8 @@ public class Message {
 
     }
 
-    public Message(String name, String tag, User user) {
-        this.name = name;
+    public Message(String text, String tag, User user) {
+        this.text = text;
         this.tag = tag;
         this.author = user;
     }
@@ -34,24 +34,24 @@ public class Message {
     }
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
+    public String getText() {
 
-        if (this.name == null)
-            this.name = "";
+        if (this.text == null)
+            this.text = "";
 
-        return name;
+        return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String name) {
+        this.text = name;
     }
 
     public String getTag() {
