@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.User;
+import com.example.domain.dto.CaptchaResponseDto;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,7 +46,10 @@ public class RegistrationController {
                           Model model) {
 
         String url = String.format(CAPTCHA_URL, captchaKey, capthcaResponce);
-        restTemplate.postForEntity(url, Collections.emptyList());
+        CaptchaResponseDto response = restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponseDto.class);
+
+        if(!response.isSuccess())
+            model.addAttribute("captchaError", "Fill captcha");
 
         boolean isConfirmEmpty = StringUtils.isEmpty(passwordConfirm);
         if (isConfirmEmpty)
@@ -54,7 +58,7 @@ public class RegistrationController {
         if (user.getPassword() != null && !user.getPassword().equals(passwordConfirm))
             model.addAttribute("passwordError", "Different passwords");
 
-        if (isConfirmEmpty || bindingResult.hasErrors()) {
+        if (isConfirmEmpty || bindingResult.hasErrors() || !response.isSuccess()) {
 
             Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
             model.mergeAttributes(errors);
