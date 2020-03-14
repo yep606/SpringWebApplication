@@ -20,7 +20,7 @@
 *.rar
 *.iml
 .idea
-*.properties
+application.properties
 *.xml
 target
 uploads
