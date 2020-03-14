@@ -16,6 +16,7 @@ public class Message {
     @NotBlank(message = "Fill the message")
     @Length(max = 2048, message = "Too long")
     private String text;
+    @Length(max = 255, message = "Too long")
     private String tag;
 
 
